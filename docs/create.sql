@@ -43,9 +43,11 @@ create table bestelling
 
 create table inhoudBestelling
 (
+	id int not null,
 	idBestelling int foreign key references bestelling (id),
 	idGerecht int foreign key references gerecht (id),
 	
+	constraint inhoudBestelling_PK primary key (id),
 	constraint BestellingId_PK primary key (idBestelling),
 	constraint GerechtId_PK primary key (idGerecht)
 )
