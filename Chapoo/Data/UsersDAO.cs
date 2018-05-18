@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Chapoo.Data
 {
@@ -10,7 +7,32 @@ namespace Chapoo.Data
     {
         public void Login()
         {
+            
+        }
+        public bool UserExists(string username)
+        {
+            string query = "select username from gebruikers where username = '@username'";
+            query.Replace("@username", username);
+            var command = new SqlCommand(query, Utils.GetConenction());
+            object o = command.ExecuteScalar();
 
+            if (o != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void GetPwd(string username)
+        {
+            string query = "select password from gebruikers where username = '@username'";
+            query.Replace("@username", username);
+            var command = new SqlCommand(query, Utils.GetConenction());
+            object result = command.ExecuteScalar();
+            string password = (string)result;
         }
     }
 }
