@@ -50,7 +50,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - VreetS kuur</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Vreet Skuur</p>
             </footer>
         </div>
 

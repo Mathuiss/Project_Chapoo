@@ -13,6 +13,24 @@ namespace VreetSkuur {
     public partial class _Default {
         
         /// <summary>
+        /// Tb_Username control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tb_Username;
+        
+        /// <summary>
+        /// Tb_Password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tb_Password;
+        
+        /// <summary>
         /// Btn_Login control.
         /// </summary>
         /// <remarks>
@@ -20,5 +38,14 @@ namespace VreetSkuur {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_Login;
+        
+        /// <summary>
+        /// Lbl_Msg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_Msg;
     }
 }
