@@ -86,5 +86,18 @@ namespace Chapoo.Data
                 }
             }
         }
+
+        public void LogOut(string username)
+        {
+            string query = "update gebruiker set isIngelogd = 0 where gebruikersnaam = '@username'";
+            query = query.Replace("@username", username);
+
+            SqlConnection connection = Utils.GetConenction();
+            connection.Open();
+
+            var command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
