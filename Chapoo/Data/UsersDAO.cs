@@ -3,13 +3,23 @@ using System.Data.SqlClient;
 
 namespace Chapoo.Data
 {
-    //Robbin
+    //Robbin Kragtwijk
     public class UsersDAO
     {
         public bool Login(string username, string password)
         {
             if (password.Equals(GetPwd(username)))
             {
+                string query = "update gebruiker set isIngelogd = 1 where gebruikersnaam = '@username'";
+                query = query.Replace("@username", username);
+
+                SqlConnection connection = Utils.GetConenction();
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+
                 return true;
             }
             else

@@ -60,7 +60,7 @@ namespace Chapoo.Logic
 
         public bool IsLogedIn(string username)
         {
-            var user = new UsersDAO()
+            var user = new UsersDAO();
             return user.IsLoggedIn(username);
         }
     }
