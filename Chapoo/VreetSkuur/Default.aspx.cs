@@ -1,23 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Chapoo.Logic;
 
 namespace VreetSkuur
 {
     public partial class _Default : Page
     {
+        Login user = new Login();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (user.IsLoggedIn((string)Session["User"]))
+            {
+                Response.Redirect("/pages/home.aspx");
+            }
         }
 
         protected void Btn_Login_Click(object sender, EventArgs e)
         {
             
+            if (user.TryLogin(Tb_Username.Text, Tb_Password.Text))
+            {
+                Session["User"] = Tb_Username.Text;
+                Response.Redirect("/pages/home.aspx");
+            }
         }
     }
 }

@@ -65,7 +65,15 @@ namespace Chapoo.Data
             {
                 connection.Open();
                 var command = new SqlCommand(query, connection);
-                return (bool)command.ExecuteScalar();
+
+                try
+                {
+                    return (bool)command.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
             }
         }
     }

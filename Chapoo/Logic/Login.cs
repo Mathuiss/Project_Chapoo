@@ -58,9 +58,9 @@ namespace Chapoo.Logic
             return true;
         }
 
-        public bool IsLogedIn(string username)
+        public bool IsLoggedIn(string username)
         {
-            var user = new UsersDAO()
+            var user = new UsersDAO();
             return user.IsLoggedIn(username);
         }
     }
