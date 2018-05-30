@@ -18,5 +18,12 @@ namespace Chapoo.VreetSkuur.UI.pages
                 Response.Redirect("/Default.aspx");
             }
         }
+
+        protected void Btn_Logout_Click(object sender, EventArgs e)
+        {
+            user.Logout((string)Session["User"]);
+            Session["User"] = null;
+            Response.Redirect("/Default.aspx");
+        }
     }
 }

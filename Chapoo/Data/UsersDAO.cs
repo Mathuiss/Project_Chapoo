@@ -13,12 +13,14 @@ namespace Chapoo.Data
                 string query = "update gebruiker set isIngelogd = 1 where gebruikersnaam = '@username'";
                 query = query.Replace("@username", username);
 
-                SqlConnection connection = Utils.GetConenction();
-                connection.Open();
+                using (SqlConnection connection = Utils.GetConenction())
+                {
+                    connection.Open();
 
-                var command = new SqlCommand(query, connection);
-                command.ExecuteNonQuery();
-                connection.Close();
+                    var command = new SqlCommand(query, connection);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
 
                 return true;
             }
@@ -34,35 +36,23 @@ namespace Chapoo.Data
             string query = "select gebruikersnaam from gebruiker where gebruikersnaam = '@x'";
             query = query.Replace("@x", username);
 
-            SqlConnection connection = Utils.GetConenction();
-            connection.Open();
-
-            var command = new SqlCommand(query, connection);
-            string o = (string)command.ExecuteScalar();
-
-            connection.Close();
-            if (o != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private string GetPwd(string username)
-        {
-            string query = "select wachtwoord from gebruiker where gebruikersnaam = '@username'";
-            query = query.Replace("@username", username);
-
             using (SqlConnection connection = Utils.GetConenction())
             {
                 connection.Open();
+
+
                 var command = new SqlCommand(query, connection);
-                object result = command.ExecuteScalar();
-                string password = (string)result;
-                return password;
+                string o = (string)command.ExecuteScalar();
+
+                connection.Close();
+                if (o != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -84,6 +74,36 @@ namespace Chapoo.Data
                 {
                     return false;
                 }
+            }
+        }
+
+        public void LogOut(string username)
+        {
+            string query = "update gebruiker set isIngelogd = 0 where gebruikersnaam = '@username'";
+            query = query.Replace("@username", username);
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        private string GetPwd(string username)
+        {
+            string query = "select wachtwoord from gebruiker where gebruikersnaam = '@username'";
+            query = query.Replace("@username", username);
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+                var command = new SqlCommand(query, connection);
+                object result = command.ExecuteScalar();
+                string password = (string)result;
+                return password;
             }
         }
     }

@@ -1,2 +1,9 @@
 ﻿body {
+    text-align: center;
+}
+
+.mid {
+    position: relative;
+    margin-bottom: 200px;
+    margin-top: 200px;
 }

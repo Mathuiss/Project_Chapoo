@@ -1,16 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="Chapoo.VreetSkuur.UI.pages.home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="Chapoo.VreetSkuur.UI.pages.home" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Tafeloverzicht</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <p>Tafeloverzicht</p>
-        </div>
-    </form>
-</body>
-</html>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Button ID="Btn_Logout" runat="server" Text="Uitloggen" OnClick="Btn_Logout_Click"/>
+</asp:Content>

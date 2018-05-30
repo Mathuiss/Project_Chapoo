@@ -8,6 +8,5 @@ namespace Chapoo.Data
 {
     class InhoudBestellingDAO
     {
-        public 
     }
 }
