@@ -26,7 +26,7 @@ namespace Chapoo.Data
             }
             else
             {
-                throw new Exception("Passwords don't match");
+                throw new Exception("Password incorrect!");
             }
 
         }

@@ -7,7 +7,7 @@ using Chapoo.Logic;
 
 namespace Chapoo.VreetSkuur.UI.pages
 {
-    public partial class home : System.Web.UI.Page
+    public partial class home : Page
     {
         Login user = new Login();
 
@@ -21,7 +21,15 @@ namespace Chapoo.VreetSkuur.UI.pages
 
         protected void Btn_Logout_Click(object sender, EventArgs e)
         {
-            user.Logout((string)Session["User"]);
+            try
+            {
+                user.Logout((string)Session["User"]);
+            }
+            catch (Exception ex)
+            {
+                Session["User"] = null;
+                Response.Redirect("/Default.aspx");
+            }
             Session["User"] = null;
             Response.Redirect("/Default.aspx");
         }

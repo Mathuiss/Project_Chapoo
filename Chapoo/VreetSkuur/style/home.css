@@ -1,0 +1,20 @@
+﻿.body-content {
+    width: 95%;
+}
+
+.col-left {
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+.col-right {
+    position: relative;
+    width: 50%;
+    float: right;
+}
+
+.row {
+    margin-bottom: 10px;
+    text-align: center;
+}

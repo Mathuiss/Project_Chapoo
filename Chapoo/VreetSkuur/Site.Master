@@ -17,7 +17,11 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <style>
+        .navbar {
+            background-color: #008CBA;
+        }
+        </style>
 </head>
 <body>
     <form runat="server">
@@ -44,7 +48,7 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" runat="server" href="~/">Vreet Skuur</a>
+                    <a class="navbar-brand" runat="server" style="color: whitesmoke" href="~/">Vreet Skuur</a>
                 </div>
             </div>
         </div>

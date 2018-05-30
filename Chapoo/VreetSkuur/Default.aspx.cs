@@ -18,11 +18,17 @@ namespace VreetSkuur
 
         protected void Btn_Login_Click(object sender, EventArgs e)
         {
-            
-            if (user.TryLogin(Tb_Username.Text, Tb_Password.Text))
+            try
             {
-                Session["User"] = Tb_Username.Text;
-                Response.Redirect("/pages/home.aspx");
+                if (user.TryLogin(Tb_Username.Text, Tb_Password.Text))
+                {
+                    Session["User"] = Tb_Username.Text;
+                    Response.Redirect("/pages/home.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Lbl_Msg.Text = ex.Message;
             }
         }
     }
