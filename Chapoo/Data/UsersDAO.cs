@@ -3,28 +3,18 @@ using System.Data.SqlClient;
 
 namespace Chapoo.Data
 {
+    //Robbin
     public class UsersDAO
     {
         public bool Login(string username, string password)
         {
-            string query = "select wachtwoord from gebruiker where gebruikersnaam = '@username'";
-            query.Replace("@username", username);
-
-            SqlConnection connection = Utils.GetConenction();
-            connection.Open();
-
-            var command = new SqlCommand(query, connection);
-
-            object passwdactal = command.ExecuteReader();
-            connection.Close();
-
-            if (password.Equals(passwdactal))
+            if (password.Equals(GetPwd(username)))
             {
                 return true;
             }
             else
             {
-                return false;
+                throw new Exception("Passwords don't match");
             }
 
         }
@@ -32,7 +22,7 @@ namespace Chapoo.Data
         public bool UserExists(string username)
         {
             string query = "select gebruikersnaam from gebruiker where gebruikersnaam = '@x'";
-            query.Replace("@x", username);
+            query = query.Replace("@x", username);
 
             SqlConnection connection = Utils.GetConenction();
             connection.Open();
@@ -51,10 +41,10 @@ namespace Chapoo.Data
             }
         }
 
-        private void GetPwd(string username)
+        private string GetPwd(string username)
         {
-            string query = "select password from gebruiker where username = '@username'";
-            query.Replace("@username", username);
+            string query = "select wachtwoord from gebruiker where gebruikersnaam = '@username'";
+            query = query.Replace("@username", username);
 
             using (SqlConnection connection = Utils.GetConenction())
             {
@@ -62,6 +52,20 @@ namespace Chapoo.Data
                 var command = new SqlCommand(query, connection);
                 object result = command.ExecuteScalar();
                 string password = (string)result;
+                return password;
+            }
+        }
+
+        public bool IsLoggedIn(string username)
+        {
+            string query = "select isIngelogd from gebruiker where gebruikersnaam = '@username'";
+            query = query.Replace("@username", username);
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+                var command = new SqlCommand(query, connection);
+                return (bool)command.ExecuteScalar();
             }
         }
     }

@@ -12,18 +12,20 @@ namespace ChapooUnitTest
         static void Main(string[] args)
         {
             string A = "Robbin";
-            string B = "robbin";
+            string B = "robbbin";
 
             var login = new UsersDAO();
 
-            if(login.Login(A, B))
+            try
             {
-                Console.WriteLine("gelukt");
+                login.IsLoggedIn(A);
+                Console.WriteLine("Geen Errors");
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("mislukt");
+                Console.WriteLine(ex.Message);
             }
+            
             Console.ReadKey();
         }
     }
