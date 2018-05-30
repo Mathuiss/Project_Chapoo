@@ -48,5 +48,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{b81d7ca6-3c4a-4d13-af81-bc8d579d5193}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{274104bc-714c-46f4-ab17-12a19e56bbd1}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{44d5a9b5-d0c6-40aa-9619-2635be6ad4e6}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VreetSkuur\VreetSkuur.csproj">
+      <Project>{fc0171a3-4785-4b71-bdb6-f88bf53a6280}</Project>
+      <Name>VreetSkuur</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

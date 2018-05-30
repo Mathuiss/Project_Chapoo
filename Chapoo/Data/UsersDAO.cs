@@ -9,6 +9,7 @@ namespace Chapoo.Data
         {
             
         }
+
         public bool UserExists(string username)
         {
             string query = "select username from gebruikers where username = '@username'";
