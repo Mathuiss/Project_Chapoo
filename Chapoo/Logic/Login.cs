@@ -21,7 +21,24 @@ namespace Chapoo.Logic
 
             //Calling UserDAO
             var user = new UsersDAO();
-            user.Login(username, password);
+
+            if (user.UserExists(username))
+            {
+                if (user.Login(username, password))
+                {
+                    return true;
+                }
+                else
+                {
+                    //If you cannot login but the user exists
+                    throw new Exception("Password incorrect!");
+                }
+            }
+            else
+            {
+                //If the user doesn't exist
+                throw new Exception("User does not exist");
+            }
         }
         
         //Checks the input for invalid things
@@ -41,9 +58,10 @@ namespace Chapoo.Logic
             return true;
         }
 
-        public bool IsLoggedIn(string username)
+        public bool IsLogedIn(string username)
         {
-
+            var user = new UsersDAO()
+            return user.IsLoggedIn(username);
         }
     }
 }
