@@ -21,14 +21,12 @@ namespace Chapoo.Data
                     command.ExecuteNonQuery();
                     connection.Close();
                 }
-
                 return true;
             }
             else
             {
                 throw new Exception("Password incorrect!");
             }
-
         }
 
         public bool UserExists(string username)
