@@ -1,5 +1,7 @@
 ﻿.body-content {
+    margin-top: 20px;
     width: 95%;
+    max-width: 600px;
 }
 
 .col-left {
@@ -15,6 +17,28 @@
 }
 
 .row {
-    margin-bottom: 10px;
+    position: center;
+    float: inherit;
     text-align: center;
+    height: 10%;
+    width: 95%;
+    margin: 20px;
+    max-width: 200px;
+    background-color: greenyellow;
 }
+
+.btn-logout {
+    float: right;
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    max-width: 150px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 16px;
+    width: 30%;
+    text-align: center;
+    display: inline-block;
+    border-radius: 4px;
+}
+
