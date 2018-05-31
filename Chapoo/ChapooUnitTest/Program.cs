@@ -11,14 +11,11 @@ namespace ChapooUnitTest
     {
         static void Main(string[] args)
         {
-            string A = "Robbin";
-            string B = "robbbin";
-
-            var login = new UsersDAO();
+            var tafel = new TafelDAO();
 
             try
             {
-                login.IsLoggedIn(A);
+                tafel.Tafelbezetten(2);
                 Console.WriteLine("Geen Errors");
             }
             catch (Exception ex)

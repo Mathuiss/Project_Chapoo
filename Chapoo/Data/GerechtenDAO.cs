@@ -8,11 +8,23 @@ using System.Data.SqlClient;
 
 namespace Chapoo.Data
 {
-    class GerechtenDAO
+    public class GerechtenDAO
     {
-        public void Gerecht()
+        public string BesteldeGerechten(int tNummer)
         {
+            string tafelnummer = tNummer.ToString();
 
+            string query = "select all from bestellingen where tafel = '@tafelnummer'";
+            query = query.Replace("@tafelnummer", tafelnummer);
+
+            using(SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+                var command = new SqlCommand(query, connection);
+                object result = command.ExecuteScalar();
+
+                return result.ToString();
+            }
         }
     }
 }
