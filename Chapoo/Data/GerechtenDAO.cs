@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Chapoo.Model;
 
 
 namespace Chapoo.Data
@@ -24,6 +25,16 @@ namespace Chapoo.Data
                 object result = command.ExecuteScalar();
 
                 return result.ToString();
+            }
+        }
+        public List<Gerechten> GetGerechten()
+        {
+            string query = "select id, naam, prijs, catogorie from gerecht";
+            
+            using(SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+                var command = new SqlCommand(query, connection);
             }
         }
     }
