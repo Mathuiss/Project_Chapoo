@@ -9,22 +9,20 @@ namespace Chapoo.Model
 {
     public struct Gerechten
     {
-        int id;
-        string naam;
-        int prijs;
-        Gerecht categorie;
+        public int Id { get; set; }
+        public string Naam { get; set; }
+        public float Prijs { get; set; }
+        public Gerecht Catogorie { get; set; }
+        public int Voorraad { get; set; }
 
-        public Gerechten(int id, string naam, int prijs, Gerecht categorie)
+        public Gerechten(int id, string naam, float prijs, Gerecht categorie, int voorraad)
         {
-            this.id = id;
-            this.naam = naam;
-            this.prijs = prijs;
-            this.categorie = categorie;
+            Id = id;
+            Naam = naam;
+            Prijs = prijs;
+            Catogorie = categorie;
+            Voorraad = voorraad;
         }
-        
-        public int Id { get => id; set => id = value; }
-        public string Naam {get => naam; set => naam = value;}
-        public int Prijs {get => prijs ; set => prijs= value;}
-        public Gerecht Catogorie { get => categorie; set => categorie= value; }
+
     }
 }

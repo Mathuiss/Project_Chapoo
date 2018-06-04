@@ -27,14 +27,30 @@ namespace Chapoo.Data
                 return result.ToString();
             }
         }
-        public List<Gerechten> GetGerechten()
+        public Gerechten GetGerechten()
         {
-            string query = "select id, naam, prijs, catogorie from gerecht";
+            string query = "select * from gerecht";
             
             using(SqlConnection connection = Utils.GetConenction())
             {
                 connection.Open();
                 var command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    return new Gerechten(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetFloat(2),
+                        (Gerecht)reader.GetInt32(3),
+                        reader.GetInt32(4)
+                        );
+                }
+                else
+                {
+                    throw new Exception("Gerechten not found, reader is empty");
+                }
             }
         }
     }
