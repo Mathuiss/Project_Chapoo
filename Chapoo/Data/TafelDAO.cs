@@ -12,10 +12,8 @@ namespace Chapoo.Data
     {
         public bool TafelVrij(int tafelnummer)
         {
-            string tafelId = tafelnummer.ToString();
-
             string query = "Select status from bestelling where id = '@tafelId'";
-            query = query.Replace("@tafelId", tafelId);
+            query = query.Replace("@tafelId", tafelnummer.ToString());
 
             using (SqlConnection connection = Utils.GetConenction())
             {
@@ -36,11 +34,10 @@ namespace Chapoo.Data
             }
         } 
         
-        public void Tafelbezetten(int nummer)
+        public void Tafelbezetten(int tafelnummer)
         {
-            string tafelnummer = nummer.ToString();
             string query = "update tafel set isBezet = 1 where isBezet = '@nummer'";
-            query = query.Replace("@nummer", tafelnummer);
+            query = query.Replace("@nummer", tafelnummer.ToString());
 
             using (SqlConnection connection = Utils.GetConenction())
             {
@@ -51,11 +48,10 @@ namespace Chapoo.Data
                 connection.Close();
             }
         }
-        public void TafelVrijGeven(int tNummer)
+        public void TafelVrijGeven(int tafelnummer)
         {
-            string tafelnummer = tNummer.ToString();
             string query = "update tafel set isBezet = 0 where isBezet = '@nummer'";
-            query = query.Replace("@nummer", tafelnummer);
+            query = query.Replace("@nummer", tafelnummer.ToString());
 
             using (SqlConnection connection = Utils.GetConenction())
             {
