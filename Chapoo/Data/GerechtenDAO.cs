@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Chapoo.Model;
 
@@ -11,20 +8,41 @@ namespace Chapoo.Data
 {
     public class GerechtenDAO
     {
-        public string BesteldeGerechten(int tNummer)
+        public List<Gerechten> BesteldeGerechten(int bestellingId)
         {
-            string tafelnummer = tNummer.ToString();
+            var bestelling = new List<Gerechten>();
 
-            string query = "select all from bestellingen where tafel = '@tafelnummer'";
-            query = query.Replace("@tafelnummer", tafelnummer);
+            string query = "select gerecht.id, naam, prijs, categorie," +
+                " voorraad from inhoudBestelling inner join gerecht on" +
+                " inhoudBestelling.idGerecht = gerecht.id where" +
+                " idBestelling = @id";
+            query = query.Replace("@id", bestellingId.ToString());
 
             using(SqlConnection connection = Utils.GetConenction())
             {
                 connection.Open();
                 var command = new SqlCommand(query, connection);
-                object result = command.ExecuteScalar();
+                SqlDataReader reader = command.ExecuteReader();
 
-                return result.ToString();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        bestelling.Add(new Gerechten(
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            (float)reader.GetDouble(2),
+                            (Gerecht)reader.GetInt32(3),
+                            reader.GetInt32(4)
+                            ));
+                    }
+                }
+                else
+                {
+                    throw new Exception("No items found");
+                }
+
+                return bestelling;
             }
         }
         public Gerechten GetGerechten()
