@@ -11,17 +11,12 @@ namespace ChapooUnitTest
     {
         static void Main(string[] args)
         {
-            var tafel = new TafelDAO();
+            var t = new GerechtenDAO();
 
             try
             {
-                var data = new GerechtenDAO();
-                List<Gerechten> bestelling = data.BesteldeGerechten(1);
-
-                foreach (Gerechten g in bestelling)
-                {
-                    Console.WriteLine("{0}{1}{2}{3}{4}", g.Id, g.Naam, g.Prijs, g.Catogorie.ToString(), g.Voorraad);
-                }
+                t.Voorraad(2);
+                Console.WriteLine("Geen Errors");
             }
             catch (Exception ex)
             {
