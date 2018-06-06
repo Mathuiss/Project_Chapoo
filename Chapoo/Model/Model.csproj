@@ -45,6 +45,7 @@
     <Compile Include="Functie.cs" />
     <Compile Include="Gerecht.cs" />
     <Compile Include="Gerechten.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="OrderAcceptedException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rekening.cs" />

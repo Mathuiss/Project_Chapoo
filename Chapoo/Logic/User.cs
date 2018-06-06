@@ -67,7 +67,13 @@ namespace Chapoo.Logic
         public void Logout(string username)
         {
             var user = new UsersDAO();
+            user.LogOut(username);
+        }
 
+        public int GetUserId(string username)
+        {
+            var user = new UsersDAO();
+            return user.GetUserId(username);
         }
     }
 }

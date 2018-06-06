@@ -9,7 +9,7 @@ namespace Chapoo.Logic
     {
         public int GetTableOrder(int tableId)
         {
-            var tableData = new TafelDAO();
+            var tableData = new Data.Table();
 
             if ((BestelStatus)tableData.GetBestelStatus(tableId) != BestelStatus.Afgerekend)
             {
@@ -23,19 +23,19 @@ namespace Chapoo.Logic
 
         public bool GetTableStatus(int tableId)
         {
-            var tableData = new TafelDAO();
+            var tableData = new Data.Table();
             return tableData.TafelBezet(tableId);
         }
 
         public void SetTableOccupied(int tableId)
         {
-            var tableData = new TafelDAO();
+            var tableData = new Data.Table();
             tableData.Tafelbezetten(tableId);
         }
 
         public void SetTableFree(int tableId)
         {
-            var tableData = new TafelDAO();
+            var tableData = new Data.Table();
             tableData.TafelVrijGeven(tableId);
         }
     }

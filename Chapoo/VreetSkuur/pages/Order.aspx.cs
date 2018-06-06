@@ -10,6 +10,7 @@ namespace Chapoo.VreetSkuur.UI.pages
     public partial class Order : System.Web.UI.Page
     {
         User user = new User();
+        Model.Order order = new Model.Order();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,11 +32,28 @@ namespace Chapoo.VreetSkuur.UI.pages
             {
                 var tafelMgr = new Table();
                 Session["Order"] = tafelMgr.GetTableOrder((int)Session["Table"]);
+                var orderControler = new Logic.Order();
+                order = orderControler.GetOrder((int)Session["Order"]);
+                
             }
             catch (OrderCompletedException)
             {
-                //TODO Make Order session for new order
+                var orderMgr = new Logic.Order();
+                try
+                {
+                    Session["Order"] = orderMgr.NewOrder((int)Session["Table"], user.GetUserId((string)Session["User"]));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Lbl_OrderId.Text = order.Id.ToString();
         }
 
         protected void Btn_Betaal_Click(object sender, EventArgs e)

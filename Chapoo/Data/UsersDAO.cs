@@ -6,6 +6,20 @@ namespace Chapoo.Data
     //Robbin Kragtwijk
     public class UsersDAO
     {
+        public int GetUserId(string username)
+        {
+            string query = "select id from gebruiker where naam = '@naam'";
+            query = query.Replace("@naam", username);
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                return (int)command.ExecuteScalar();
+            }
+        }
+
         public bool Login(string username, string password)
         {
             if (password.Equals(GetPwd(username)))

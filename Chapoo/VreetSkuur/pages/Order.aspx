@@ -17,6 +17,7 @@
         </div>
         <div class="bottom">
             <asp:Button ID="Btn_Betaal" runat="server" Text="Afrekenen" OnClick="Btn_Betaal_Click"/>
+            <asp:Label ID="Lbl_OrderId" runat="server" Text=""></asp:Label>
         </div>
     </div>
 </asp:Content>
