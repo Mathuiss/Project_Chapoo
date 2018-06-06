@@ -53,5 +53,24 @@ namespace Chapoo.Data
                 }
             }
         }
+        public int Voorraad(int gerechtId)
+        {
+            string query = "select voorraad from gerecht where id = '@id'";
+            query = query.Replace("@id", gerechtId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+                var command = new SqlCommand(query, connection);
+                object result = command.ExecuteScalar();
+
+                return (int)result;
+            }
+        }
+
+        public void UpdateVoorraad(int gerechtId, int inStock)
+        {
+            string query = "update ";
+        }
     }
 }

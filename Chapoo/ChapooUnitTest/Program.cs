@@ -11,11 +11,11 @@ namespace ChapooUnitTest
     {
         static void Main(string[] args)
         {
-            var tafel = new TafelDAO();
+            var t = new GerechtenDAO();
 
             try
             {
-                tafel.Tafelbezetten(2);
+                t.Voorraad(2);
                 Console.WriteLine("Geen Errors");
             }
             catch (Exception ex)
