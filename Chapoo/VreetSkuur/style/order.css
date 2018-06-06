@@ -1,0 +1,29 @@
+﻿.content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.mid {
+    height: 565px;
+}
+
+.upper input {
+    border: solid;
+    color: whitesmoke;
+    height: 40px;
+    width: 100%;
+    background-color: #535353;
+    border-radius: 4px;
+}
+
+.upper-left {
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+
+.upper-right {
+    width: 50%;
+    float: right;
+    text-align: left;
+}
