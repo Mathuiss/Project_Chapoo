@@ -13,7 +13,6 @@ namespace Chapoo.Model
         public float Prijs { get; set; }
         public Gerecht Catogorie { get; set; }
         public int Voorraad { get; set; }
-
         public Gerechten(int id, string naam, float prijs, Gerecht categorie, int voorraad)
         {
             Id = id;
@@ -22,6 +21,5 @@ namespace Chapoo.Model
             Catogorie = categorie;
             Voorraad = voorraad;
         }
-
     }
 }
