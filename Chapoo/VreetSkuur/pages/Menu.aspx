@@ -8,15 +8,12 @@
         <asp:Button ID="Btn_Back" runat="server" Text="<" OnClick="Btn_Back_Click"/>
     </div>
     <div class="mid">
-        <div class="left">
-
-        </div>
-        <div class="right">
-
-        </div>
+        <asp:TreeView ID="Tv_Menu" runat="server"></asp:TreeView>
     </div>
 
     <div class="bottom">
-
+        <asp:Label ID="Lbl_Index" runat="server" Text=""></asp:Label>
+        <asp:Button ID="Btn_Aantekening" runat="server" Text="Aantekening" OnClick="Btn_Aantekening_Click" />
+        <asp:Button ID="Btn_Opslaan" runat="server" Text="Opslaan" OnClick="Btn_Opslaan_Click" />
     </div>
 </asp:Content>
