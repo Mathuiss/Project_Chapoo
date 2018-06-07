@@ -7,11 +7,25 @@ namespace Chapoo.Data
 {
     public class OrderDAO
     {
+        public void CompleteOrder(int tableId)
+        {
+            string query = "update bestelling set status = 1 where id = @id";
+            query = query.Replace("@id", GetOrderByTableIdOpen(tableId).ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public int NewOrder(int tableNr, int userId)
         {
             int newId = OrderId() + 1;
 
-            string query = "insert into bestelling (id, gebruiker, tafel status) values (@id, @user, @table, 0)";
+            string query = "insert into bestelling (id, gebruiker, tafel, status) values (@id, @user, @table, 0)";
             query = query.Replace("@id", newId.ToString());
             query = query.Replace("@user", userId.ToString());
             query = query.Replace("@table", tableNr.ToString());
@@ -26,10 +40,40 @@ namespace Chapoo.Data
 
             return newId;
         }
-
-        int OrderId()
+        
+        public int GetOrderByTableId(int tableId)
         {
-            string query = "select top(id) from bestelling";
+            string query = " select id from bestelling where tafel = @tableId order by id desc";
+            query = query.Replace("@tableId", tableId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                return (int)command.ExecuteScalar();
+            }
+
+        }
+
+        public int GetOrderByTableIdOpen(int tableId)
+        {
+            string query = "select id from bestelling where tafel = @tableId and dbo.bestelling.status = 0 order by id desc";
+            query = query.Replace("@tableId", tableId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                return (int)command.ExecuteScalar();
+            }
+        }
+
+        public int GetOrderByTableIdFinished(int tableId)
+        {
+            string query = "select id from bestelling where tafel = @tableId and dbo.bestelling.status = 1 order by id desc";
+            query = query.Replace("@tableId", tableId.ToString());
 
             using (SqlConnection connection = Utils.GetConenction())
             {
@@ -70,6 +114,19 @@ namespace Chapoo.Data
                 {
                     throw new Exception("Order not found");
                 }
+            }
+        }
+
+        int OrderId()
+        {
+            string query = "select id from bestelling order by id desc";
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                return (int)command.ExecuteScalar();
             }
         }
     }
