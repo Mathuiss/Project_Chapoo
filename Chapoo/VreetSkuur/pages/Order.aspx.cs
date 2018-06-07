@@ -60,11 +60,13 @@ namespace Chapoo.VreetSkuur.UI.pages
         protected void Btn_Eten_Click(object sender, EventArgs e)
         {
             Session["Type"] = "Eten";
+            Response.Redirect("/pages/Menu.aspx");
         }
 
         protected void Btn_Drinken_Click(object sender, EventArgs e)
         {
             Session["Type"] = "Drinken";
+            Response.Redirect("/pages/Menu.aspx");
         }
     }
 }
