@@ -24,14 +24,30 @@ namespace Chapoo.VreetSkuur.UI.pages
             tableMgr.SetTableOccupied((int)Session["Table"]);
 
             CheckOrder();
+            LoadListView();
         }
-
+        
         void CheckOrder()
         {
             var orderMgr = new Logic.Order();
             order = orderMgr.GetOrderByTable((int)Session["Table"], user.GetUserId((string)Session["User"]));
-
+            Session["Order"] = order.Id;
             Lbl_OrderId.Text = order.Id.ToString();
+        }
+
+        void LoadListView()
+        {
+            //Lv_Order.Items.Add();
+
+            var productMgr = new GerechtenManager();
+            try
+            {
+                List<Gerechten> products = productMgr.GetBesteldeGerechten((int)Session["Order"]);
+            }
+            catch (OrderEmptyException)
+            {
+                Lbl_Ex.Text = "Order is leeg";
+            }
         }
 
         protected void Btn_Betaal_Click(object sender, EventArgs e)
@@ -43,12 +59,12 @@ namespace Chapoo.VreetSkuur.UI.pages
 
         protected void Btn_Eten_Click(object sender, EventArgs e)
         {
-
+            Session["Type"] = "Eten";
         }
 
         protected void Btn_Drinken_Click(object sender, EventArgs e)
         {
-
+            Session["Type"] = "Drinken";
         }
     }
 }

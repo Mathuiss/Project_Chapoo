@@ -47,6 +47,7 @@
     <Compile Include="Gerechten.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderAcceptedException.cs" />
+    <Compile Include="OrderEmptyException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rekening.cs" />
   </ItemGroup>

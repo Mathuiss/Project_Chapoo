@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Chapoo.Model;
 using Chapoo.Data;
 
 namespace Chapoo.Logic
 {
     public class GerechtenManager
     {
-        public void Add(int orderId, int gerechtId)
+        public List<Gerechten> GetBesteldeGerechten(int orderId)
+        {
+            var productManager = new GerechtenDAO();
+            return productManager.BesteldeGerechten(orderId);
+        }
+
+        public void AddToOrder(int orderId, int gerechtId)
         {
             if (OpVoorraad(gerechtId, out int inStock))
             {

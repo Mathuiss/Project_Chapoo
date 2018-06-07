@@ -31,6 +31,24 @@ namespace Chapoo.VreetSkuur.UI.pages {
         protected global::System.Web.UI.WebControls.Button Btn_Drinken;
         
         /// <summary>
+        /// Lv_Order control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView Lv_Order;
+        
+        /// <summary>
+        /// ChapooDB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ChapooDB;
+        
+        /// <summary>
         /// Btn_Betaal control.
         /// </summary>
         /// <remarks>
@@ -47,5 +65,14 @@ namespace Chapoo.VreetSkuur.UI.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Lbl_OrderId;
+        
+        /// <summary>
+        /// Lbl_Ex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_Ex;
     }
 }

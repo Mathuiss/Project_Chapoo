@@ -13,11 +13,13 @@
             </div>
         </div>
         <div class="mid">
-            
+            <asp:ListView ID="Lv_Order" runat="server" DataSourceID="ChapooDB"></asp:ListView>
+            <asp:SqlDataSource ID="ChapooDB" runat="server"></asp:SqlDataSource>
         </div>
         <div class="bottom">
             <asp:Button ID="Btn_Betaal" runat="server" Text="Afrekenen" OnClick="Btn_Betaal_Click"/>
             <asp:Label ID="Lbl_OrderId" runat="server" Text=""></asp:Label>
+            <asp:Label ID="Lbl_Ex" runat="server" Text=""></asp:Label>
         </div>
     </div>
 </asp:Content>
