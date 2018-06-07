@@ -37,6 +37,8 @@ namespace Chapoo.Logic
         {
             var tableData = new Data.Table();
             tableData.TafelVrijGeven(tableId);
+            var orderMgr = new Order();
+            orderMgr.CompleteOrder(tableId);
         }
     }
 }

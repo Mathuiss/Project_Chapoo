@@ -8,7 +8,7 @@ namespace Chapoo.Data
     {
         public int GetUserId(string username)
         {
-            string query = "select id from gebruiker where naam = '@naam'";
+            string query = "select id from gebruiker where gebruikersnaam = '@naam'";
             query = query.Replace("@naam", username);
 
             using (SqlConnection connection = Utils.GetConenction())
