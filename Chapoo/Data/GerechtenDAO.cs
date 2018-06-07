@@ -39,7 +39,7 @@ namespace Chapoo.Data
                 }
                 else
                 {
-                    throw new Exception("No items found");
+                    throw new OrderEmptyException("No items found");
                 }
 
                 return bestelling;
