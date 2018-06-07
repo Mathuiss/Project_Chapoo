@@ -25,11 +25,22 @@ namespace Chapoo.VreetSkuur.UI.pages
         void SetPageSettings()
         {
             Lbl_Type.Text = (string)Session["Type"];
+            Tv_Menu.Nodes.Add(new TreeNode("Text"));
         }
 
         protected void Btn_Back_Click(object sender, EventArgs e)
         {
             Response.Redirect("/pages/Order.aspx");
+        }
+
+        protected void Btn_Opslaan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Btn_Aantekening_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
