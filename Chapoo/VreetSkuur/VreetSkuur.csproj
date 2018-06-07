@@ -167,6 +167,7 @@
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="pages\home.aspx" />
+    <Content Include="pages\Menu.aspx" />
     <Content Include="pages\Order.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -199,6 +200,7 @@
     <Content Include="Site.Master" />
     <Content Include="style\default.css" />
     <Content Include="style\home.css" />
+    <Content Include="style\menu.css" />
     <Content Include="style\order.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -223,6 +225,13 @@
     </Compile>
     <Compile Include="pages\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Order.aspx.cs">
       <DependentUpon>Order.aspx</DependentUpon>
