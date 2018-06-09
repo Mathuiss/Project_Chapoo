@@ -31,13 +31,13 @@ namespace Chapoo.VreetSkuur.UI.pages {
         protected global::System.Web.UI.WebControls.Button Btn_Back;
         
         /// <summary>
-        /// Tv_Menu control.
+        /// LV_menu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView Tv_Menu;
+        protected global::System.Web.UI.WebControls.ListView LV_menu;
         
         /// <summary>
         /// Lbl_Index control.

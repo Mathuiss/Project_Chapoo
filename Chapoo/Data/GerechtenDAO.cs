@@ -88,7 +88,18 @@ namespace Chapoo.Data
 
         public void UpdateVoorraad(int gerechtId, int inStock)
         {
-            string query = "update ";
+            string query = "update tafel set voorraad = '@instock' where id = '@id'";
+            query = query.Replace("@instock", inStock.ToString());
+            query = query.Replace("@id", gerechtId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }
 }

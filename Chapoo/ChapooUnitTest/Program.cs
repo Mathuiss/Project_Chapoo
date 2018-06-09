@@ -15,7 +15,7 @@ namespace ChapooUnitTest
 
             try
             {
-                t.Voorraad(2);
+                t.UpdateVoorraad((int)1, (int)12);
                 Console.WriteLine("Geen Errors");
             }
             catch (Exception ex)

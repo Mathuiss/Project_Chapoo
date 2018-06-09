@@ -1,2 +1,7 @@
 ﻿body {
+    position: relative;
+}
+
+.mid {
+    position: relative;
 }
