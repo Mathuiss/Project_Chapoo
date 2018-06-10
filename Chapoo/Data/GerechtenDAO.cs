@@ -150,6 +150,7 @@ namespace Chapoo.Data
                 return bestelling;
             }
         }
+
         public Gerechten GetGerechten()
         {
             string query = "select * from gerecht";
@@ -176,6 +177,21 @@ namespace Chapoo.Data
                 }
             }
         }
+
+        public void AddGerechtToOrder(int orderId, int gerechtId)
+        {
+            string query = "insert into inhoudBestelling (id, idBestelling, idGerecht) values (@id, @orderId, @productId)";
+            query = query.Replace("@id", GetNewProductToOrderId().ToString());
+            query = query.Replace("@orderId", orderId.ToString());
+            query = query.Replace("@productId", gerechtId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public int Voorraad(int gerechtId)
         {
             string query = "select voorraad from gerecht where id = '@id'";
@@ -193,7 +209,33 @@ namespace Chapoo.Data
 
         public void UpdateVoorraad(int gerechtId, int inStock)
         {
-            string query = "update ";
+            string query = "update gerecht set voorraad = @inStock where id = @gerechtId";
+            query = query.Replace("@inStock", inStock.ToString());
+            query = query.Replace("@gerechtId", gerechtId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        int GetNewProductToOrderId()
+        {
+            string query = "select id from inhoudBestelling order by id desc";
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                var command = new SqlCommand(query, connection);
+                try
+                {
+                    return (int)command.ExecuteScalar();
+                }
+                catch (Exception)
+                {
+                    return 1;
+                }
+            }
         }
     }
 }

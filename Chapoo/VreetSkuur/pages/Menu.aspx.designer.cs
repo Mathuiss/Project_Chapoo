@@ -13,31 +13,58 @@ namespace Chapoo.VreetSkuur.UI.pages {
     public partial class Menu {
         
         /// <summary>
-        /// Lbl_Type control.
+        /// Lb_Products control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Type;
+        protected global::System.Web.UI.WebControls.ListBox Lb_Products;
         
         /// <summary>
-        /// Btn_Back control.
+        /// Btn_Plus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Back;
+        protected global::System.Web.UI.WebControls.Button Btn_Plus;
         
         /// <summary>
-        /// Lbl_Index control.
+        /// Lbl_Amount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Index;
+        protected global::System.Web.UI.WebControls.Label Lbl_Amount;
+        
+        /// <summary>
+        /// Btn_Min control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Min;
+        
+        /// <summary>
+        /// Ul_Products control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Ul_Products;
+        
+        /// <summary>
+        /// Lbl_Ex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_Ex;
         
         /// <summary>
         /// Btn_Aantekening control.

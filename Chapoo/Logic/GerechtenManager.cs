@@ -35,11 +35,12 @@ namespace Chapoo.Logic
         {
             if (OpVoorraad(gerechtId, out int inStock))
             {
+                AddToOrder(gerechtId, orderId);
                 MinVoorraad(gerechtId, inStock);
             }
             else
             {
-                throw new Exception("Items out of stock");
+                throw new OutOfStockException("Items out of stock");
             }
             //private methode aanroepen ==> check voorraad genoeg
             //vooraad afhalen,
@@ -66,6 +67,12 @@ namespace Chapoo.Logic
             var gerecht = new GerechtenDAO();
             inStock--;
             gerecht.UpdateVoorraad(gerechtId, inStock);
+        }
+
+        void Add(int gerechtId, int orderId)
+        {
+            var gerecht = new GerechtenDAO();
+            gerecht.AddGerechtToOrder(gerechtId, orderId);
         }
     }
 }

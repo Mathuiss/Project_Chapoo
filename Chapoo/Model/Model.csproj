@@ -49,6 +49,7 @@
     <Compile Include="Order.cs" />
     <Compile Include="OrderAcceptedException.cs" />
     <Compile Include="OrderEmptyException.cs" />
+    <Compile Include="OutOfStockException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rekening.cs" />
   </ItemGroup>

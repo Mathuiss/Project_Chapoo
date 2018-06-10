@@ -6,7 +6,7 @@
     <div class="content">
         <div class="upper">
             <div class="upper-left">
-                <asp:Button class="btn-eten" ID="Btn_Desert" runat="server" Text="Desert" OnClick="Btn_Eten_Click"/>
+                <asp:Button class="btn-eten" ID="Btn_Desert" runat="server" Text="Diner" OnClick="Btn_Eten_Click"/>
                 <asp:Button ID="Btn_Lunch" runat="server" Text="Lunch" OnClick="Btn_Lunch_Click"/>
             </div>
             <div class="upper-right">
