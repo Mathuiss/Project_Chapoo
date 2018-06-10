@@ -8,7 +8,7 @@
         <asp:Button ID="Btn_Back" runat="server" Text="<" OnClick="Btn_Back_Click"/>
     </div>
     <div class="mid">
-        <asp:TreeView ID="Tv_Menu" runat="server"></asp:TreeView>
+        <hr />
     </div>
 
     <div class="bottom">

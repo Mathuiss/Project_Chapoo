@@ -13,13 +13,22 @@ namespace Chapoo.VreetSkuur.UI.pages {
     public partial class Order {
         
         /// <summary>
-        /// Btn_Eten control.
+        /// Btn_Desert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Eten;
+        protected global::System.Web.UI.WebControls.Button Btn_Desert;
+        
+        /// <summary>
+        /// Btn_Lunch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Lunch;
         
         /// <summary>
         /// Btn_Drinken control.
@@ -31,22 +40,22 @@ namespace Chapoo.VreetSkuur.UI.pages {
         protected global::System.Web.UI.WebControls.Button Btn_Drinken;
         
         /// <summary>
-        /// Lv_Order control.
+        /// Lst_Order control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView Lv_Order;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Lst_Order;
         
         /// <summary>
-        /// ChapooDB control.
+        /// Btn_Wijzigen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ChapooDB;
+        protected global::System.Web.UI.WebControls.Button Btn_Wijzigen;
         
         /// <summary>
         /// Btn_Betaal control.

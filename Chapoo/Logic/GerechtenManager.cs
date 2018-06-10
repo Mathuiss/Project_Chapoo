@@ -13,6 +13,24 @@ namespace Chapoo.Logic
             return productManager.BesteldeGerechten(orderId);
         }
 
+        public List<Gerechten> GetEten()
+        {
+            var productManager = new GerechtenDAO();
+            return productManager.GetDiner();
+        }
+
+        public List<Gerechten> GetLunch()
+        {
+            var productManager = new GerechtenDAO();
+            return productManager.GetLunch();
+        }
+
+        public List<Gerechten> GetDrinken()
+        {
+            var productManager = new GerechtenDAO();
+            return productManager.GetDrinks();
+        }
+
         public void AddToOrder(int orderId, int gerechtId)
         {
             if (OpVoorraad(gerechtId, out int inStock))

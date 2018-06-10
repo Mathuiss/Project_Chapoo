@@ -82,7 +82,7 @@ namespace Chapoo.Data
                 {
                     return (bool)command.ExecuteScalar();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return false;
                 }

@@ -8,6 +8,111 @@ namespace Chapoo.Data
 {
     public class GerechtenDAO
     {
+        public List<Gerechten> GetLunch()
+        {
+            string query = "select * from gerecht where categorie <= 4";
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    var menu = new List<Gerechten>();
+
+                    while (reader.Read())
+                    {
+                        menu.Add(new Gerechten(
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            (float)reader.GetDouble(2),
+                            (Gerecht)reader.GetInt32(3),
+                            reader.GetInt32(4)
+                            ));
+                    }
+
+                    return menu;
+                }
+                else
+                {
+                    throw new Exception("No items in stock");
+                }
+            }
+        }
+
+        public List<Gerechten> GetDiner()
+        {
+            string query = "select * from gerecht where categorie >= 10";
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    var menu = new List<Gerechten>();
+
+                    while (reader.Read())
+                    {
+                        menu.Add(new Gerechten(
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            (float)reader.GetDouble(2),
+                            (Gerecht)reader.GetInt32(3),
+                            reader.GetInt32(4)
+                            ));
+                    }
+
+                    return menu;
+                }
+                else
+                {
+                    throw new Exception("No items in stock");
+                }
+            }
+        }
+
+        public List<Gerechten> GetDrinks()
+        {
+            string query = "select * from gerecht where categorie > 3 and categorie < 10";
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    var menu = new List<Gerechten>();
+
+                    while (reader.Read())
+                    {
+                        menu.Add(new Gerechten(
+                            reader.GetInt32(0),
+                            reader.GetString(1),
+                            (float)reader.GetDouble(2),
+                            (Gerecht)reader.GetInt32(3),
+                            reader.GetInt32(4)
+                            ));
+                    }
+
+                    return menu;
+                }
+                else
+                {
+                    throw new Exception("No items in stock");
+                }
+            }
+        }
+
         public List<Gerechten> BesteldeGerechten(int bestellingId)
         {
             var bestelling = new List<Gerechten>();

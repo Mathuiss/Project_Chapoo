@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 using Chapoo.Logic;
 using Chapoo.Model;
 
@@ -11,6 +13,7 @@ namespace Chapoo.VreetSkuur.UI.pages
     {
         User user = new User();
         private Model.Order order;
+        List<Gerechten> products;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,11 +23,11 @@ namespace Chapoo.VreetSkuur.UI.pages
 
             }
 
-            var tableMgr = new Table();
+            var tableMgr = new Logic.Table();
             tableMgr.SetTableOccupied((int)Session["Table"]);
 
             CheckOrder();
-            LoadListView();
+            LoadList();
         }
         
         void CheckOrder()
@@ -34,39 +37,58 @@ namespace Chapoo.VreetSkuur.UI.pages
             Session["Order"] = order.Id;
             Lbl_OrderId.Text = order.Id.ToString();
         }
-
-        void LoadListView()
+        
+        void LoadList()
         {
-            //Lv_Order.Items.Add();
-
             var productMgr = new GerechtenManager();
             try
             {
-                List<Gerechten> products = productMgr.GetBesteldeGerechten((int)Session["Order"]);
+                products = productMgr.GetBesteldeGerechten((int)Session["Order"]);
             }
             catch (OrderEmptyException)
             {
+                products = new List<Gerechten>();
+
                 Lbl_Ex.Text = "Order is leeg";
+            }
+            
+            foreach (Gerechten item in products)
+            {
+                var li = new HtmlGenericControl("li");
+                li.InnerHtml = "<div class=\"div-left\">" + item.Naam + "</div><div class=\"div-right\"> € " + item.Prijs + "</div>";
+                Lst_Order.Controls.Add(li);
             }
         }
 
         protected void Btn_Betaal_Click(object sender, EventArgs e)
         {
-            var tableMgr = new Table();
+            var tableMgr = new Logic.Table();
             tableMgr.SetTableFree((int)Session["Table"]);
             Response.Redirect("/pages/home.aspx");
         }
 
         protected void Btn_Eten_Click(object sender, EventArgs e)
         {
-            Session["Type"] = "Eten";
+            Session["Type"] = MenuType.Eten;
             Response.Redirect("/pages/Menu.aspx");
         }
 
         protected void Btn_Drinken_Click(object sender, EventArgs e)
         {
-            Session["Type"] = "Drinken";
+            Session["Type"] = MenuType.Drinken;
             Response.Redirect("/pages/Menu.aspx");
+        }
+
+        protected void Btn_Lunch_Click(object sender, EventArgs e)
+        {
+            Session["Type"] = MenuType.Lunch;
+            Response.Redirect("/pages/Menu.aspx");
+        }
+
+        protected void Btn_Wijzigen_Click(object sender, EventArgs e)
+        {
+            Session["Type"] = MenuType.Bestelling;
+            Response.Redirect("/Pages/Menu.aspx");
         }
     }
 }
