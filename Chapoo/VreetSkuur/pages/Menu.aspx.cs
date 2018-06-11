@@ -7,6 +7,8 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Chapoo.Logic;
 using Chapoo.Model;
+using System.Drawing;
+using Chapoo.Logic;
 
 namespace Chapoo.VreetSkuur.UI.pages
 {
