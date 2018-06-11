@@ -95,7 +95,6 @@ namespace Chapoo.VreetSkuur.UI.pages
         {
             Session["Table"] = 9;
             Response.Redirect("/pages/Order.aspx");
-
         }
 
         protected void Btn_Tafel2_Click(object sender, EventArgs e)

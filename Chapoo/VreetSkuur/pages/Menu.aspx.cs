@@ -134,7 +134,7 @@ namespace Chapoo.VreetSkuur.UI.pages
 
         protected void Btn_Aantekening_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Lb_Products_SelectedIndexChanged(object sender, EventArgs e)
