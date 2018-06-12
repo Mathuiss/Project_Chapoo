@@ -1,0 +1,21 @@
+﻿body {
+}
+
+.col-mid {
+    height: 400px;
+}
+
+.ta-container {
+    margin-top: 2.5%;
+}
+
+.tb {
+    width: 90%;
+    margin: auto;
+    max-width: 450px;
+    height: 300px;
+}
+
+.btn-container {
+    margin-top: 20px;
+}
