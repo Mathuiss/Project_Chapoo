@@ -13,6 +13,15 @@ namespace Chapoo.VreetSkuur.UI.pages {
     public partial class Order {
         
         /// <summary>
+        /// Lbl_Table control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_Table;
+        
+        /// <summary>
         /// Btn_Desert control.
         /// </summary>
         /// <remarks>

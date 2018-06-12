@@ -26,6 +26,8 @@ namespace Chapoo.VreetSkuur.UI.pages
             var tableMgr = new Logic.Table();
             tableMgr.SetTableOccupied((int)Session["Table"]);
 
+            Lbl_Table.Text = "Tafel: " + Convert.ToString((int)Session["Table"]);
+
             CheckOrder();
             LoadList();
         }

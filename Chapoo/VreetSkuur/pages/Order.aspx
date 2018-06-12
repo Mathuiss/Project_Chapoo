@@ -4,6 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content">
+        <div class="lbl-container">
+            <asp:Label CssClass="lbl-table" ID="Lbl_Table" runat="server" Text=""></asp:Label>
+        </div>
         <div class="upper">
             <div class="upper-left">
                 <asp:Button class="btn-eten" ID="Btn_Desert" runat="server" Text="Diner" OnClick="Btn_Eten_Click"/>

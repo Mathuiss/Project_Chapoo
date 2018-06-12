@@ -8,6 +8,13 @@
     overflow: auto;
 }
 
+.lbl-container {
+    width: 30%;
+    margin: auto;
+    margin-top: 15px;
+    text-align: center;
+}
+
 .upper input {
     border: solid;
     color: whitesmoke;
