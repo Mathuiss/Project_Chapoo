@@ -9,12 +9,12 @@ namespace Chapoo.Logic
     {
         public bool TryLogin(string username, string password)
         {
-            if (!CheckCredentials(username))
+            if (!Validator.CheckCredentials(username))
             {
                 return false;
             }
 
-            if (!CheckCredentials(password))
+            if (!Validator.CheckCredentials(password))
             {
                 return false;
             }
@@ -41,23 +41,6 @@ namespace Chapoo.Logic
             }
         }
         
-        //Checks the input for invalid things
-        private bool CheckCredentials(string text)
-        {
-            char[] letters = text.ToCharArray();
-            string AllowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.?!@#$%^&*()_";
-
-            for (int i = 0; i < letters.Length; i++)
-            {
-                if (!AllowedChars.Contains(letters[i].ToString()))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         public bool IsLoggedIn(string username)
         {
             var user = new UsersDAO();

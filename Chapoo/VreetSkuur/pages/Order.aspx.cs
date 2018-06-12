@@ -35,12 +35,14 @@ namespace Chapoo.VreetSkuur.UI.pages
             var orderMgr = new Logic.Order();
             order = orderMgr.GetOrderByTable((int)Session["Table"], user.GetUserId((string)Session["User"]));
             Session["Order"] = order.Id;
-            Lbl_OrderId.Text = order.Id.ToString();
         }
         
         void LoadList()
         {
+            float total = 0f;
+
             var productMgr = new GerechtenManager();
+
             try
             {
                 products = productMgr.GetBesteldeGerechten((int)Session["Order"]);
@@ -55,9 +57,12 @@ namespace Chapoo.VreetSkuur.UI.pages
             foreach (Gerechten item in products)
             {
                 var li = new HtmlGenericControl("li");
-                li.InnerHtml = "<div class=\"div-left\">" + item.Naam + "</div><div class=\"div-right\"> € " + item.Prijs + "</div>";
+                li.InnerHtml = "<div class=\"div-left\">" + item.Naam + "</div><div class=\"div-right\"> € " + item.Prijs.ToString("0.00") + "</div>";
                 Lst_Order.Controls.Add(li);
+                total += item.Prijs;
             }
+
+            Lbl_Total.Text = "Totaal: € " + total.ToString("0.00");
         }
 
         protected void Btn_Betaal_Click(object sender, EventArgs e)

@@ -13,7 +13,7 @@
     color: whitesmoke;
     height: 40px;
     width: 100%;
-    background-color: #535353;
+    background-color: #52565e;
     border-radius: 4px;
 }
 
@@ -31,7 +31,7 @@
 
 .mid {
     margin-top: 15px;
-    min-height: 400px;
+    min-height: 370px;
     margin-bottom: 15px;
 }
 
@@ -39,21 +39,42 @@
     list-style-type: none;
 }
 
-.list-order {
+.order-list {
     position: relative;
     margin-top: 20px;
     margin-top: 30px;
-    max-width: 100px;
+    max-width: 600px;
+}
+
+li {
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .div-left {
     position: relative;
     width: 80%;
     float: left;
+    overflow: auto;
 }
 
 .div-right {
     position: relative;
     width: 20%;
     float: right;
+    text-align: center;
+}
+
+.btn {
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    max-width: 150px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn-betaal {
+    float:right;
 }

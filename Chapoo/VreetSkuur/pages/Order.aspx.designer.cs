@@ -49,6 +49,15 @@ namespace Chapoo.VreetSkuur.UI.pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Lst_Order;
         
         /// <summary>
+        /// Lbl_Total control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_Total;
+        
+        /// <summary>
         /// Btn_Wijzigen control.
         /// </summary>
         /// <remarks>
@@ -65,15 +74,6 @@ namespace Chapoo.VreetSkuur.UI.pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_Betaal;
-        
-        /// <summary>
-        /// Lbl_OrderId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_OrderId;
         
         /// <summary>
         /// Lbl_Ex control.

@@ -35,7 +35,8 @@ namespace Chapoo.Logic
         {
             if (OpVoorraad(gerechtId, out int inStock))
             {
-                AddToOrder(gerechtId, orderId);
+                var gerecht = new GerechtenDAO();
+                gerecht.AddGerechtToOrder(orderId, gerechtId);
                 MinVoorraad(gerechtId, inStock);
             }
             else
@@ -45,6 +46,23 @@ namespace Chapoo.Logic
             //private methode aanroepen ==> check voorraad genoeg
             //vooraad afhalen,
             //bestelling tussentabel nieuw item toevoegen, bestelling id & gerecht id
+        }
+
+        public void RemoveOneFromOrder(int orderId, int gerechtId)
+        {
+            var gerecht = new GerechtenDAO();
+            int amountPresent = gerecht.GetAmountPresent(orderId, gerechtId);
+            gerecht.RemoveFromOrder(orderId, gerechtId);
+
+
+            amountPresent--;
+
+            for (int i = 0; i < amountPresent; i++)
+            {
+                gerecht.AddGerechtToOrder(orderId, gerechtId);
+            }
+
+            gerecht.UpdateVoorraad(gerechtId, gerecht.Voorraad(gerechtId) + 1);
         }
 
         private bool OpVoorraad(int gerechtId, out int inStock)
@@ -66,6 +84,13 @@ namespace Chapoo.Logic
         {
             var gerecht = new GerechtenDAO();
             inStock--;
+            gerecht.UpdateVoorraad(gerechtId, inStock);
+        }
+
+        void PlusVoorraad(int gerechtId, int inStock)
+        {
+            var gerecht = new GerechtenDAO();
+            inStock++;
             gerecht.UpdateVoorraad(gerechtId, inStock);
         }
 

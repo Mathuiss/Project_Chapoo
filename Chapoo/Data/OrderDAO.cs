@@ -117,6 +117,43 @@ namespace Chapoo.Data
             }
         }
 
+        public string GetNotes(int orderId)
+        {
+            string query = "select aantekening from bestelling where id = @orderId";
+            query = query.Replace("@orderId", orderId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var commamd = new SqlCommand(query, connection);
+
+                try
+                {
+                    return (string)commamd.ExecuteScalar();
+                }
+                catch (Exception)
+                {
+                    return string.Empty;
+                }
+            }
+        }
+
+        public void SetNotes(int orderId, string note)
+        {
+            string query = "update bestelling set aantekening = '@note' where id = @orderId";
+            query = query.Replace("@note", note);
+            query = query.Replace("@orderId", orderId.ToString());
+            
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var commamd = new SqlCommand(query, connection);
+                commamd.ExecuteNonQuery();
+            }
+        }
+
         int OrderId()
         {
             string query = "select id from bestelling order by id desc";

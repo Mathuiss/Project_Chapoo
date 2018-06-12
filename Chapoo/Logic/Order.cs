@@ -47,5 +47,24 @@ namespace Chapoo.Logic
             var orderMgr = new OrderDAO();
             orderMgr.CompleteOrder(tableId);
         }
+
+        public void AddNotes(int orderId, string note)
+        {
+            if (Validator.CheckCredentials(note))
+            {
+                var orderMgr = new OrderDAO();
+                orderMgr.SetNotes(orderId, note);
+            }
+            else
+            {
+                throw new Exception("invalid input");
+            }
+        }
+
+        public string GetNotes(int orderId)
+        {
+            var orderMgr = new OrderDAO();
+            return orderMgr.GetNotes(orderId);
+        }
     }
 }

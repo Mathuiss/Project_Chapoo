@@ -4,4 +4,43 @@
 
 .mid {
     position: relative;
+    text-align: center;
+}
+
+.lb-products {
+    width: 600px;
+}
+
+.controls-container {
+    margin-top: 5%;
+}
+
+.btn {
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    width: 15%;
+    max-width: 150px;
+    height: 40px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 4px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.bottom {
+    text-align: center;
+}
+
+.bottom .btn {
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    width: 30%;
+    max-width: 150px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
 }

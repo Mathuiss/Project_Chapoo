@@ -18,11 +18,13 @@
             <ul class="order-list" id="Lst_Order" runat="server">
             </ul>
         </div>
+        <div class="total-container">
+            <asp:Label ID="Lbl_Total" runat="server" Text=""></asp:Label>
+        </div>
         <div class="bottom">
             <hr />
-            <asp:Button ID="Btn_Wijzigen" runat="server" Text="Bestelling Wijzigen" OnCLick="Btn_Wijzigen_Click"/>
-            <asp:Button ID="Btn_Betaal" runat="server" Text="Afrekenen" OnClick="Btn_Betaal_Click"/>
-            <asp:Label ID="Lbl_OrderId" runat="server" Text=""></asp:Label>
+            <asp:Button class="btn" ID="Btn_Wijzigen" runat="server" Text="Bestelling Wijzigen" OnCLick="Btn_Wijzigen_Click"/>
+            <asp:Button class="btn btn-betaal"  ID="Btn_Betaal" runat="server" Text="Afrekenen" OnClick="Btn_Betaal_Click"/>
             <asp:Label ID="Lbl_Ex" runat="server" Text=""></asp:Label>
         </div>
     </div>

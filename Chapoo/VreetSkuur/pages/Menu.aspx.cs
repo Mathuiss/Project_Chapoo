@@ -14,7 +14,7 @@ namespace Chapoo.VreetSkuur.UI.pages
     {
         User user = new User();
         List<Gerechten> products;
-        List<Gerechten> selected = new List<Gerechten>();
+        List<Gerechten> selected;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,41 +27,63 @@ namespace Chapoo.VreetSkuur.UI.pages
         }
 
         void SetPageSettings()
-        {
+        { 
             var orderManager = new GerechtenManager();
+            
+            switch ((MenuType)Session["Type"])
+            {
+                case MenuType.Eten:
+                    products = orderManager.GetEten();
+                    break;
+                case MenuType.Drinken:
+                    products = orderManager.GetDrinken();
+                    break;
+                case MenuType.Lunch:
+                    products = orderManager.GetLunch();
+                    break;
+                case MenuType.Bestelling:
+                    products = orderManager.GetBesteldeGerechten((int)Session["Order"]);
+                    break;
 
-            if (Session["Products"] == null)
-            {
-                switch (Session["Type"])
-                {
-                    case MenuType.Eten:
-                        products = orderManager.GetEten();
-                        break;
-                    case MenuType.Drinken:
-                        products = orderManager.GetDrinken();
-                        break;
-                    case MenuType.Lunch:
-                        products = orderManager.GetLunch();
-                        break;
-                    case MenuType.Bestelling:
-                        products = orderManager.GetBesteldeGerechten((int)Session["Order"]);
-                        break;
-                }
-            }
-            else
-            {
-                products = (List<Gerechten>)Session["Products"];
             }
 
-            LoadPageSetting();
+            LoadProductList();
+            LoadSelectedList();
+            LoadOrderdItems();
         }
 
-        void LoadPageSetting()
+        void LoadSelectedList()
         {
-            Session["Products"] = products;
+            try
+            {
+                var orderManager = new GerechtenManager();
+                selected = orderManager.GetBesteldeGerechten((int)Session["Order"]);
+            }
+            catch (OrderEmptyException ex)
+            {
+                selected = new List<Gerechten>();
+                Lbl_Ex.Text = ex.Message;
+            }
+        }
 
-            Lb_Products.Height = new Unit(500);
-            
+        void LoadProductList()
+        {
+            Lb_Products.Height = new Unit(250);
+
+            if (Lb_Products.Items.Count == 0)
+            {
+                foreach (Gerechten item in products)
+                {
+                    Lb_Products.Items.Add(item.Naam);
+                }
+            }
+        }
+
+        void RefreshProductList()
+        {
+            Lb_Products.Items.Clear();
+            Lb_Products.Height = new Unit(250);
+
             foreach (Gerechten item in products)
             {
                 Lb_Products.Items.Add(item.Naam);
@@ -70,6 +92,9 @@ namespace Chapoo.VreetSkuur.UI.pages
 
         void LoadOrderdItems()
         {
+            Ul_Products.Controls.Clear();
+            LoadSelectedList();
+
             foreach (Gerechten item in selected)
             {
                 var text = new HtmlGenericControl();
@@ -92,49 +117,66 @@ namespace Chapoo.VreetSkuur.UI.pages
 
             return count;
         }
+
+        void ReloadOrder()
+        {
+            if ((MenuType)Session["Type"] == MenuType.Bestelling)
+            {
+                var orderManager = new GerechtenManager();
+                products = orderManager.GetBesteldeGerechten((int)Session["Order"]);
+                RefreshProductList();
+                LoadSelectedList();
+                LoadOrderdItems();
+            }
+        }
         
         protected void Btn_Opslaan_Click(object sender, EventArgs e)
         {
-            var productManager = new GerechtenManager();
-
-            foreach (Gerechten item in selected)
-            {
-                try
-                {
-                    productManager.AddToOrder(item.Id, (int)Session["Order"]);
-                    Session["Products"] = null;
-                    Response.Redirect("/pages/Order.aspx");
-                }
-                catch (OutOfStockException)
-                {
-                    Lbl_Ex.Text = item.Naam + " Out of stock";
-                }
-                catch (Exception ex)
-                {
-                    Lbl_Ex.Text = ex.Message;
-                }
-            }
+            Response.Redirect("/pages/Order.aspx");
         }
 
         protected void Btn_Plus_Click(object sender, EventArgs e)
         {
-            selected.Add(products[Lb_Products.SelectedIndex]);
-            Session["Selected"] = selected;
-            LoadOrderdItems();
+            var orderMgr = new GerechtenManager();
+
+            try
+            {
+                orderMgr.AddToOrder((int)Session["Order"], products[Lb_Products.SelectedIndex].Id);
+                Lbl_Ex.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                Lbl_Ex.Text = ex.Message;
+            }
             Lbl_Amount.Text = CountItemSelected().ToString();
+            ReloadOrder();
+            LoadOrderdItems();
+            RefreshProductList();
         }
 
         protected void Btn_Min_Click(object sender, EventArgs e)
         {
-            selected.Remove(products[Lb_Products.SelectedIndex]);
-            Session["Selected"] = selected;
-            LoadOrderdItems();
+            var orderMgr = new GerechtenManager();
+
+            try
+            {
+                orderMgr.RemoveOneFromOrder((int)Session["Order"], products[Lb_Products.SelectedIndex].Id);
+                Lbl_Ex.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                Lbl_Ex.Text = ex.Message;
+            }
+            
             Lbl_Amount.Text = CountItemSelected().ToString();
+            ReloadOrder();
+            LoadOrderdItems();
+            RefreshProductList();
         }
 
         protected void Btn_Aantekening_Click(object sender, EventArgs e)
         {
-            
+            Response.Redirect("/pages/Notes.aspx");
         }
 
         protected void Lb_Products_SelectedIndexChanged(object sender, EventArgs e)

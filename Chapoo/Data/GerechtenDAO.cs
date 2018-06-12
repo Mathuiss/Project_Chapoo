@@ -10,7 +10,7 @@ namespace Chapoo.Data
     {
         public List<Gerechten> GetLunch()
         {
-            string query = "select * from gerecht where categorie <= 4";
+            string query = "select * from gerecht where categorie < 4";
 
             using (SqlConnection connection = Utils.GetConenction())
             {
@@ -117,15 +117,13 @@ namespace Chapoo.Data
         {
             var bestelling = new List<Gerechten>();
 
-            string query = "select gerecht.id, naam, prijs, categorie," +
-                " voorraad from inhoudBestelling inner join gerecht on" +
-                " inhoudBestelling.idGerecht = gerecht.id where" +
-                " idBestelling = @id";
+            string query = "select gerecht.id, naam, prijs, categorie, voorraad from gerecht inner join inhoudBestelling on gerecht.id = inhoudBestelling.idGerecht where idBestelling = @id";
             query = query.Replace("@id", bestellingId.ToString());
 
             using(SqlConnection connection = Utils.GetConenction())
             {
                 connection.Open();
+
                 var command = new SqlCommand(query, connection);
                 SqlDataReader reader = command.ExecuteReader();
 
@@ -178,6 +176,36 @@ namespace Chapoo.Data
             }
         }
 
+        public int GetAmountPresent(int orderId, int gerechtId)
+        {
+            string query = "select count(id) from inhoudBestelling where idBestelling = @orderId and idGerecht = @gerechtId";
+            query = query.Replace("@orderId", orderId.ToString());
+            query = query.Replace("@gerechtId", gerechtId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                return (int)command.ExecuteScalar();
+            }
+        }
+
+        public void RemoveFromOrder(int orderId, int gerechtId)
+        {
+            string query = "delete from inhoudBestelling where idBestelling = @orderId and idGerecht = @gerechtId";
+            query = query.Replace("@orderId", orderId.ToString());
+            query = query.Replace("@gerechtId", gerechtId.ToString());
+
+            using (SqlConnection connection = Utils.GetConenction())
+            {
+                connection.Open();
+
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
         public void AddGerechtToOrder(int orderId, int gerechtId)
         {
             string query = "insert into inhoudBestelling (id, idBestelling, idGerecht) values (@id, @orderId, @productId)";
@@ -187,6 +215,8 @@ namespace Chapoo.Data
 
             using (SqlConnection connection = Utils.GetConenction())
             {
+                connection.Open();
+
                 var command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
             }
@@ -200,6 +230,7 @@ namespace Chapoo.Data
             using (SqlConnection connection = Utils.GetConenction())
             {
                 connection.Open();
+
                 var command = new SqlCommand(query, connection);
                 object result = command.ExecuteScalar();
 
@@ -215,6 +246,8 @@ namespace Chapoo.Data
 
             using (SqlConnection connection = Utils.GetConenction())
             {
+                connection.Open();
+
                 var command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
             }
@@ -226,10 +259,12 @@ namespace Chapoo.Data
 
             using (SqlConnection connection = Utils.GetConenction())
             {
+                connection.Open();
+
                 var command = new SqlCommand(query, connection);
                 try
                 {
-                    return (int)command.ExecuteScalar();
+                    return (int)command.ExecuteScalar() + 1;
                 }
                 catch (Exception)
                 {
