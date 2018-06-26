@@ -34,6 +34,18 @@ namespace UI
             LBL_datum.Text = DateTime.Now.ToString("dd MMMM yyyy");
             LBL_dag.Text = DateTime.Now.ToString("dddd");
         }
+
+        private void Btn_Keuken_Click(object sender, EventArgs e)
+        {
+            KeukenUI keukenWeergaven = new KeukenUI();
+            keukenWeergaven.ShowDialog();
+        }
+
+        private void Btn_bar_Click(object sender, EventArgs e)
+        {
+            Bar bar = new Bar();
+            bar.ShowDialog();
+        }
     }
 }
 

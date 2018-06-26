@@ -50,6 +50,7 @@
             this.Btn_bar.TabIndex = 0;
             this.Btn_bar.Text = "Bar";
             this.Btn_bar.UseVisualStyleBackColor = false;
+            this.Btn_bar.Click += new System.EventHandler(this.Btn_bar_Click);
             // 
             // Btn_Keuken
             // 
@@ -61,6 +62,7 @@
             this.Btn_Keuken.TabIndex = 1;
             this.Btn_Keuken.Text = "Keuken";
             this.Btn_Keuken.UseVisualStyleBackColor = false;
+            this.Btn_Keuken.Click += new System.EventHandler(this.Btn_Keuken_Click);
             // 
             // timer
             // 
@@ -112,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 753);
+            this.ClientSize = new System.Drawing.Size(1062, 673);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LBL_dag);
             this.Controls.Add(this.LBL_datum);

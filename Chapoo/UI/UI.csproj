@@ -45,6 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bar.Designer.cs">
+      <DependentUpon>Bar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BestellingenWeergeven.cs" />
+    <Compile Include="KeukenUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeukenUI.Designer.cs">
+      <DependentUpon>KeukenUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeukenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +69,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bar.resx">
+      <DependentUpon>Bar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeukenUI.resx">
+      <DependentUpon>KeukenUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KeukenForm.resx">
       <DependentUpon>KeukenForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +104,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{b81d7ca6-3c4a-4d13-af81-bc8d579d5193}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{274104bc-714c-46f4-ab17-12a19e56bbd1}</Project>
       <Name>Logic</Name>

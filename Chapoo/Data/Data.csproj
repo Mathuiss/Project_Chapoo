@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GerechtenDAO.cs" />
+    <Compile Include="KeukenDAO.cs" />
     <Compile Include="OrderDAO.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="UsersDAO.cs" />

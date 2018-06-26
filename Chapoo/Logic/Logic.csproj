@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Encryptor.cs" />
     <Compile Include="GerechtenManager.cs" />
+    <Compile Include="KeukenManager.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="User.cs" />
